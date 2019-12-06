@@ -7,12 +7,9 @@ import localCache from "./localCache";
 import request from "superagent";
 
 class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      searchText:""
-    };
-  }
+  state = {
+    searchText:""
+  };
 
   componentDidMount(){
     console.log("componentDidMount of Football App");
@@ -27,20 +24,16 @@ class App extends Component {
     });
   }
 
-  filterClubs = event => {
-    event.preventDefault();
-    this.setState({ searchText: event.target.value.toLowerCase() });
-  };
+  filterClubs = text => this.setState({searchText: text});
 
   render() {
-    let updatedList = localCache.getAll().filter(club => {
-      let clubName = club.name.toLowerCase();
-      return clubName.search(this.state.searchText) !== -1;
-    });
+    let updatedList = localCache.getAll().filter(club =>
+      club.name.toLowerCase().search(this.state.searchText) !== -1
+    );
     return (
       <div className="jumbotron">
         <Header noClubs={10} />
-        <FilterControls  onChange={this.filterClubs} />
+        <FilterControls  handleChange={this.filterClubs} />
         <ClubList clubs={updatedList} />
       </div>
     );

@@ -8,9 +8,6 @@ class Club extends Component{
         console.log(`shouldComponentUpdate of Club (${this.props.club.name})`)
         return false;
     }
-    componentWillUnmount() {
-        console.log(`componentWillUnmount of Club (${this.props.club.name})`)
-    }
 
     render(){
         console.log(`render of Club (${this.props.club.name})`)
