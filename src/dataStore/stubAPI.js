@@ -26,10 +26,9 @@ class StubAPI{
         return this.clubs;
     }
 
-    update(key,name,placeInLeague){
-        let index = _.findIndex(this.clubs,club => club .name === key);
+    update(key,placeInLeague){
+        let index = _.findIndex(this.clubs,club => club.placeInLeague === key);
         if (index !== -1){
-            this.clubs[index].name = name;
             this.clubs[index].placeInLeague = placeInLeague;
             return true;
         }
@@ -37,4 +36,4 @@ class StubAPI{
     }
 }
 
-export default new StubAPI;
+export default new StubAPI();

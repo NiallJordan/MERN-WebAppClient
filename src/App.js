@@ -29,7 +29,7 @@ class App extends Component {
   filterClubs = text => this.setState({searchText: text});
 
   render() {
-    let clubs = api.getAll();
+    //let clubs = api.getAll();
     let updatedList = localCache.getAll().filter(club =>
       club.name.toLowerCase().search(this.state.searchText) !== -1
     );

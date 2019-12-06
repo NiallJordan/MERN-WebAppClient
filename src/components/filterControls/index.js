@@ -17,7 +17,7 @@ export default class FilterControls extends Component {
               <span>Name: </span>
               <input type="text" placeholder="Name Search" onChange={this.onChange}/>
               <span> League: </span>
-              <select id="position">
+              <select id="league">
                 <option value="all">All</option>
                 <option value="pl">Premier League</option>
                 <option value="serie">Serie A</option>
