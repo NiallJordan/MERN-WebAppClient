@@ -32,6 +32,12 @@ class Club extends Component{
         api.update(this.state.previousDetails.placeInLeague,updatedPlaceInLeague);
     };
 
+    handleDelete = () =>  this.setState({ status : 'del'} );
+    handleConfirm = (e) => {
+    e.preventDefault();
+    this.props.deleteHandler(this.state.placeInLeague);
+    };
+
 
     shouldComponentUpdate(nextProps, nextState){
         console.log(`shouldComponentUpdate of Club (${this.props.club.name})`)
@@ -48,6 +54,11 @@ class Club extends Component{
             activeButtons = buttons.edit;
             leftButtonHandler = this.handleSave;
             rightButtonHandler = this.handleCancel;
+        }else if(this.state.status === 'del'){
+            cardColor = "bg-warning";
+            activeButtons = buttons.delete;
+            leftButtonHandler = this.handleCancel;
+            rightButtonHandler = this.handleConfirm;
         }
         console.log(`render of Club (${this.props.club.name})`)
         return (

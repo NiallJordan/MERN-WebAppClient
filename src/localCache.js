@@ -10,5 +10,10 @@ class LocalCache {
     populate(clubs) {
         this.clubs = clubs;
     }
+
+    delete(k){
+        let clubs = _.remove(this.clubs,club => club.name === k);
+        return clubs;
+    }
 }
 export default (new LocalCache() );
