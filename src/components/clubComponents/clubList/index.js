@@ -1,0 +1,16 @@
+import React, { Component } from "react";
+import Club from "../club/";
+import './clubList.css';
+
+export default class ClubList extends Component {
+  render() {
+    const clubCards = this.props.clubs.map(c => (
+      <Club key={c.placeInLeague} club={c} />
+    ));
+    return (
+      <div className="container-fluid clubs bg-info">
+        <div className="row">{clubCards}</div>
+      </div>
+    );
+  }
+}

@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import Header from '../src/components/header';
 import Filter from '../src/components/filterControls';
 import Club from '../src/components/clubComponents/club';
+import ClubList from '../src/components/clubComponents/clubList';
 
 import { action } from '@storybook/addon-actions';
 
@@ -26,3 +27,8 @@ storiesOf("Football Club App/Filter Controls", module).add("default", () => (
 storiesOf("Football Club App/Club", module).add("default", () => (
   <Club club={sample}/>
 ));    
+
+storiesOf("Football Club App/Club List", module).add("default", () => { 
+  const samples = [sample, sample, sample, sample, sample]
+  return <ClubList clubs={samples}/>
+});
