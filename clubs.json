@@ -1,0 +1,146 @@
+{
+    "clubs": [
+        {
+            "id":1,
+            "name": "Liverpool",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague": 1
+        },
+        {
+            "id":2,
+            "name": "Leicester",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague": 2
+        },
+        {
+            "id":3,
+            "name": "Man City",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague": 3
+        },
+        {
+            "id":4,
+            "name": "Chelsea",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague": 4
+        },
+
+        {
+            "id":5,
+            "name": "Wolves",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague": 5
+        },
+
+        {
+            "id":6,
+            "name": "Man United",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague": 6
+        },
+        {
+            "id":7,
+            "name": "Crystal Palace",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague": 7
+        },
+        {
+            "id": 8,
+            "name": "Spurs",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague": 8
+        },
+        {
+            "id":9,
+            "name": "Sheffield Utd",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague": 9
+        },
+        {
+            "id":10,
+            "name": "Arsenal",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague": 10
+        },
+        {
+            "id":11,
+            "name": "Newcastle",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague": 11
+        },
+        {
+            "id":12,
+            "name": "Burnley",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague":12
+        },
+        {
+            "id":13,
+            "name": "Brighton",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague": 13
+        },
+        {
+            "id":14,
+            "name": "Bournemouth",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague":14
+        },
+        {
+            "id":15,
+            "name": "West Ham",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague":15
+        },
+        {
+            "id":16,
+            "name": "Aston Villa",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague": 16
+        },
+        {
+            "id":17,
+            "name": "Southampton",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague": 17
+        },
+        {
+            "id":18,
+            "name": "Everton",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague": 18
+        },
+        {
+            "id":19,
+            "name": "Norwich",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague": 19
+        },
+        {
+            "id":20,
+            "name": "Watford",
+            "picture": {"logo":"./logo.png"},
+            "league" : "Premier League",
+            "placeInLeague": 20
+        }
+    ]
+}

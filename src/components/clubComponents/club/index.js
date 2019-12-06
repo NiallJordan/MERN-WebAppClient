@@ -4,7 +4,16 @@ import "../../../fontawesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Club extends Component{
+    shouldComponentUpdate(nextProps, nextState){
+        console.log(`shouldComponentUpdate of Club (${this.props.club.name})`)
+        return false;
+    }
+    componentWillUnmount() {
+        console.log(`componentWillUnmount of Club (${this.props.club.name})`)
+    }
+
     render(){
+        console.log(`render of Club (${this.props.club.name})`)
         return (
         <div className="col-sm-3">
             <div className="card">
