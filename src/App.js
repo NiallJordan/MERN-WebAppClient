@@ -8,7 +8,7 @@ import api from "./dataStore/stubAPI";
 import _ from 'lodash';
 
 class App extends Component {
-  state = { search:"",gender:"all"};
+  state = { search:"",league:"all"};
 
   handleChange = (type,value)=>{
     type === "name" ? this.setState({search : value}): this.setState({ league : value});
