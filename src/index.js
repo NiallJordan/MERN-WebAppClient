@@ -1,12 +1,40 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import request from "superagent";
+import api from "./dataStore/stubAPI";
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
+import App from "./App";
+import ClubPage from "./components/clubComponents/clubPage/clubPage";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class Router extends Component {
+  componentDidMount() {
+    request.get("https://randomuser.me/api/?results=50").end((error, res) => {
+      if (res) {
+        let { results: clubs } = JSON.parse(res.text);
+        api.initialize(clubs);
+        this.setState({});
+      } else {
+        console.log(error);
+      }
+    });
+  }
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  render() {
+    return (
+       <BrowserRouter>
+        <div className="jumbotron">
+          <div className="container-fluid ">
+            <Switch>
+              <Route path="/clubs/:id" component={ClubPage} />
+              <Route exact path="/" component={App} />
+              <Redirect from="*" to="/" />
+            </Switch>
+          </div>
+        </div>
+      </BrowserRouter>
+    );
+  }
+}
+
+ReactDOM.render(<Router />, document.getElementById("root"));

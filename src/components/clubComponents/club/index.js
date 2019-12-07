@@ -3,6 +3,7 @@ import "./club.css";
 import "../../../fontawesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import buttons from "../../../config/buttonsConfig";
+import { Link } from "react-router-dom";
 import api from '../../../dataStore/stubAPI'
 
 class Club extends Component{
@@ -69,7 +70,9 @@ class Club extends Component{
         return (
         <div className="col-sm-3">
             <div className={`card ${cardColor} `}>
-            <img className="card-img-tag center " alt={this.props.club.name} src={this.props.club.picture.logo} />
+                <Link to={`/clubs/${this.props.club.phone}`}>
+                    <img className="card-img-tag center " alt={this.props.club.name} src={this.props.club.picture.logo} />
+                </Link>
             <div className="card-body">
                 <h5 className="card-title ">
                     {`${this.props.club.name}`}

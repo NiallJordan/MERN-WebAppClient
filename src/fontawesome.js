@@ -5,7 +5,9 @@ import {
   faHome,
   faBirthdayCake,
   faArrowCircleLeft,
-  faMedal
+  faMedal,
+  faFutbol,
+  faUsers
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faEnvelope, faPhone, faHome, faBirthdayCake, faMedal,faArrowCircleLeft);
+library.add(faEnvelope, faPhone,faFutbol,faUsers, faHome, faBirthdayCake, faMedal,faArrowCircleLeft);

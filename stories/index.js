@@ -7,6 +7,7 @@ import Header from '../src/components/header';
 import Filter from '../src/components/filterControls';
 import Club from '../src/components/clubComponents/club';
 import ClubList from '../src/components/clubComponents/clubList';
+import ClubProfile from '../src/components/clubComponents/clubPublic/clubPublic'
 
 
 const sample = {
@@ -63,4 +64,8 @@ storiesOf("Football Club App/Club List", module).addDecorator(story => ( <Memory
   const samples = [sample, sample, sample, sample, sample]
   return <ClubList clubs={samples}/>
 });
+
+storiesOf("Football Club App/Club Page/Public Profile",module).add("default",() => ( 
+  <ClubProfile user = {sample}/>
+))
 
