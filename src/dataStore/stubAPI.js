@@ -6,7 +6,7 @@ class StubAPI{
     }
 
     find(id){
-        let index = _.findIndex(this.clubs, club => `${club.placeInLeague}` === id);
+        let index = _.findIndex(this.clubs, club => `${club.phone}` === id);
         if(index !== -1){
             return this.clubs[index];
         }
@@ -14,7 +14,7 @@ class StubAPI{
     }
 
     delete(k){
-        let elements = _.remove(this.clubs,club => club.name === k);
+        let elements = _.remove(this.clubs,club => club.phone === k);
         return elements;
     }
 
@@ -26,9 +26,10 @@ class StubAPI{
         return this.clubs;
     }
 
-    update(key,placeInLeague){
-        let index = _.findIndex(this.clubs,club => club.placeInLeague === key);
+    update(key,placeInLeague,phone){
+        let index = _.findIndex(this.clubs,club => club.phone === key);
         if (index !== -1){
+            this.clubs[index].phone = phone;
             this.clubs[index].placeInLeague = placeInLeague;
             return true;
         }

@@ -8,28 +8,33 @@ import api from '../../../dataStore/stubAPI'
 class Club extends Component{
     state = {
         status: "",
+        phone: this.props.club.phone,
         placeInLeague: this.props.club.placeInLeague,
         previousDetails: {
-          placeInLeague: this.props.club.placeInLeague
+            phone:this.props.club.phone,
+            placeInLeague: this.props.club.placeInLeague
         }
       };
 
     //-----------------HANDLERS----------------------
     handleEdit = () => this.setState({status:"edit"});
     handleCancel = () => {
-        let {placeInLeague} = this.state.previousDetails;
-        this.setState({ status:"", placeInLeague});
+        let {placeInLeague,phone} = this.state.previousDetails;
+        this.setState({ status:"", placeInLeague,phone});
     };
+    handlePhoneChange = e => this.setState({phone: e.target.value});
     handlePlaceInLeagueChange = e => this.setState({placeInLeague: e.target.value});
     handleSave = e => {
         e.preventDefault();
-        let updatedPlaceInLeague = this.state.email.trim();
-        if(!updatedPlaceInLeague){
+        let updatedPlaceInLeague = this.state.placeInLeague.trim();
+        let updatedPhone = this.state.phone.trim();
+
+        if(!updatedPlaceInLeague || !updatedPhone){
             return;
         }
-        let {placeInLeague} =this.state;
-        this.setState({status: "", previousDetails:{placeInLeague}});
-        api.update(this.state.previousDetails.placeInLeague,updatedPlaceInLeague);
+        let {placeInLeague,phone} = this.state;
+        this.setState({status: "", previousDetails:{placeInLeague,phone}});
+        api.update(this.state.previousDetails.phone,updatedPlaceInLeague,updatedPhone);
     };
 
     handleDelete = () =>  this.setState({ status : 'del'} );
@@ -39,10 +44,10 @@ class Club extends Component{
     };
 
 
-    shouldComponentUpdate(nextProps, nextState){
-        console.log(`shouldComponentUpdate of Club (${this.props.club.name})`)
-        return false;
-    }
+    // shouldComponentUpdate(nextProps, nextState){
+    //     console.log(`shouldComponentUpdate of Club (${this.props.club.name})`)
+    //     return false;
+    // }
 
     render(){
         let activeButtons = buttons.normal;
@@ -77,12 +82,19 @@ class Club extends Component{
                         <p>
                             <input type="text" className="form-control" value={this.state.placeInLeague} onChange={this.handlePlaceInLeagueChange}/>
                         </p>
+                         <p>
+                            <input type="text" className="form-control" value={this.state.phone} onChange={this.handlePhoneChange}/>
+                        </p>
                     </Fragment>
                     ):(
                     <Fragment>
                         <p key="placeInLeague">
                             <FontAwesomeIcon icon={["fas", "medal"]} />
                             <span> {this.props.club.placeInLeague}</span>
+                        </p>
+                        <p>
+                            <FontAwesomeIcon icon={["fas", "phone"]} />
+                            <span> {this.props.club.phone} </span>
                         </p>
                     </Fragment>
                     )}

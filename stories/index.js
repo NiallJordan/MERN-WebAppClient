@@ -12,7 +12,8 @@ const sample = {
   name: 'Liverpool',
   picture: {logo:'./logo.png'},
   league: 'Premier League',
-  placeInLeague: 1
+  placeInLeague: 1,
+  phone: '0151 906 1892'
 }
 //Header Story
 storiesOf("Football Club App/Header", module).add("default", () => (
@@ -32,3 +33,7 @@ storiesOf("Football Club App/Club List", module).add("default", () => {
   const samples = [sample, sample, sample, sample, sample]
   return <ClubList clubs={samples}/>
 });
+
+storiesOf("Football Club App/Club", module).add("default", () => ( 
+  <Club club={sample} deleteHandler={action('Delete confirmed') }/>
+));
