@@ -7,8 +7,9 @@ import Header from '../src/components/header';
 import Filter from '../src/components/filterControls';
 import Club from '../src/components/clubComponents/club';
 import ClubList from '../src/components/clubComponents/clubList';
-import ClubProfile from '../src/components/clubComponents/clubPublic/clubPublic';
+import ClubPublic from '../src/components/clubComponents/clubPublic/clubPublic';
 import ClubMoreInfo from '../src/components/clubComponents/clubMoreInfo/index';
+import ClubProfile from '../src/components/clubComponents/clubPublic/index';
 
 
 const sample = {
@@ -66,11 +67,17 @@ storiesOf("Football Club App/Club List", module).addDecorator(story => ( <Memory
   return <ClubList clubs={samples}/>
 });
 
-storiesOf("Football Club App/Club Page/Public Profile",module).add("default",() => ( 
-  <ClubProfile club = {sample}/>
-))
+storiesOf("Football Club App/Club Page/Public Profile",module)
+.add("default",() => (
+  <ClubPublic club = {sample}/>
+));
 
 storiesOf("Football Club App/Club Page/More Details", module)
 .add("default", () => (
    <ClubMoreInfo club = {sample}/>
 ));
+
+storiesOf("Football Club App/Club Page/Club Profile",module).addDecorator(story => (<MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>))
+.add("default", () => {
+  <ClubProfile club = {sample}/>
+});

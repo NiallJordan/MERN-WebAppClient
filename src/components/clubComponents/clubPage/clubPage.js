@@ -1,11 +1,22 @@
 import React, {Fragment} from "react";
 import { withRouter } from "react-router-dom";
+import ClubPublic from "../clubPublic/clubPublic";
+import api from "../../../dataStore/stubAPI";
+import ClubMoreInfo from "../clubMoreInfo/index";
 
 const ClubPage = props => {
+  const { id } = props.match.params;
+  const club = api.find(id);
    return (
     <Fragment>
-        <h3> Club id: {props.match.params.id} </h3>
-        <h3> Detail page stub </h3>
+       {club ? (
+         <Fragment>
+           <ClubPublic club= {club}/>
+           <ClubMoreInfo club={club}/>
+        </Fragment>
+       ):(
+         <p>Waiting for club details</p>
+       )}
     </Fragment>
   );
 };
