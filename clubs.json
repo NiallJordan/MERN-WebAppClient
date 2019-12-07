@@ -1,11 +1,39 @@
 {
     "clubs": [
         {
-            "id":1,
             "name": "Liverpool",
             "picture": {"logo":"./logo.png"},
-            "league" : "Premier League",
-            "placeInLeague": 1
+            "league": "Premier League",
+            "placeInLeague": 1,
+            "phone": "0151 906 1892",
+            "location":{
+                "city":"Liverpool",
+                "country":"England"
+            },
+            "stadium":{
+                "name":"Anfield",
+                "capacity":54074
+            },
+            "numberOfPlayers":37,
+            "yearEstablished": 1892,
+            "manager":{
+                "name": "Jurgen Klopp",
+                "titlesWon" :1
+            },
+            "players":[
+                {"name":"Alisson Becker"},
+                {"name":"Virgil van Dijk"},
+                {"name":"Joe Gomez"},
+                {"name":"Andy Robertson"},
+                {"name":"Trente Alexander-Arnold"},
+                {"name":"Fabinho"},
+                {"name":"Gini Wijnaldum"},
+                {"name":"Jordan Henderson"},
+                {"name":"James Milner"},
+                {"name":"Sadio Mane"},
+                {"name":"Mo Salah"},
+                {"name":"Roberto Firmino"}
+            ]
         },
         {
             "id":2,
