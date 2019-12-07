@@ -1,6 +1,7 @@
 {
     "clubs": [
         {
+            "id":1,
             "name": "Liverpool",
             "picture": {"logo":"./logo.png"},
             "league": "Premier League",

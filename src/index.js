@@ -9,7 +9,7 @@ import ClubPage from "./components/clubComponents/clubPage/clubPage";
 
 class Router extends Component {
   componentDidMount() {
-    request.get("https://randomuser.me/api/?results=50").end((error, res) => {
+    request.get("http://localhost:3002/clubs/?results=20").end((error, res) => {
       if (res) {
         let { results: clubs } = JSON.parse(res.text);
         api.initialize(clubs);

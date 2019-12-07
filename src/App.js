@@ -11,7 +11,9 @@ class App extends Component {
   state = { search:"",league:"all"};
 
   handleChange = (type,value)=>{
-    type === "name" ? this.setState({search : value}): this.setState({ league : value});
+    type === "name" 
+    ? this.setState({search : value}) 
+    : this.setState({ league : value});
   };
 
   deleteClub =(key) => {
@@ -26,7 +28,7 @@ class App extends Component {
       return name.toLowerCase().search(this.state.search.toLowerCase()) !== -1;
     });
     filteredClubs = this.state.league === "all" ? filteredClubs : filteredClubs.filter(c => c.league === this.state.league);
-    let sortedClubs = _.sortBy(filteredClubs,c => c.name);
+    let sortedClubs = _.sortBy(filteredClubs,c => c.placeInLeague);
     return (
     <Fragment>
         <Header noClubs={sortedClubs.length} />

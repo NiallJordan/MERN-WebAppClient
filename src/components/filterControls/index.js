@@ -26,8 +26,8 @@ export default class FilterControls extends Component {
               <span> League: </span>
               <select id="league" onChange={this.handleLeagueChange}>
                 <option value="all">All</option>
-                <option value="pl">Premier League</option>
-                <option value="serie">Serie A</option>
+                <option value="Premier League">Premier League</option>
+                <option value="Serie A">Serie A</option>
               </select>
             </h4>
           </div>
