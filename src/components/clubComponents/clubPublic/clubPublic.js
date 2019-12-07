@@ -3,14 +3,14 @@ import { capitalize } from "../../../util";
 import "../../../fontawesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default ({ user }) => {
+export default ({ club }) => {
   const location = capitalize(
-    `${user.location.city}, ${user.location.country}`
+    `${club.location.city}, ${club.location.country}`
   );
   const stadium = capitalize(
-    ` ${user.stadium.name}, ${user.stadium.capacity}`
+    ` ${club.stadium.name}, Capacity: ${club.stadium.capacity}`
   );
-  const league = `${user.league}, Position: ${user.placeInLeague}`;
+  const league = `${club.league}, Position: ${club.placeInLeague}`;
   return (
     <Fragment>
       <h4>
@@ -27,7 +27,7 @@ export default ({ user }) => {
       </h4>
       <h4>
         <FontAwesomeIcon icon={["fas", "phone"]} />
-        <span> {user.phone}</span>
+        <span> {club.phone}</span>
       </h4>
       
     </Fragment>

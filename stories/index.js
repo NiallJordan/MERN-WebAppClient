@@ -7,7 +7,8 @@ import Header from '../src/components/header';
 import Filter from '../src/components/filterControls';
 import Club from '../src/components/clubComponents/club';
 import ClubList from '../src/components/clubComponents/clubList';
-import ClubProfile from '../src/components/clubComponents/clubPublic/clubPublic'
+import ClubProfile from '../src/components/clubComponents/clubPublic/clubPublic';
+import ClubMoreInfo from '../src/components/clubComponents/clubMoreInfo/index';
 
 
 const sample = {
@@ -26,24 +27,24 @@ const sample = {
   },
   numberOfPlayers:37,
   yearEstablished: 1892,
-  "login":{
-    "uuid":"9813dc96-18f5-11ea-b8f0-2e728ce88125",
-    "username":"liverpool-admin",
-    "password":"sixTimes",
-    "salt":"iLikeCake",
-    "md5": "78671b38791a07d80315a2865c83ec3d",
-    "sha1": "	b74353cd5155fad7cf5cb86913bc46964a7b1324",
-    "sha256":"713bc71624de6b21c41d6806ea8addadf9d8ceb79e17b5d4bedb754a2c5a0140"
-
+  manager:{
+    name: "Jurgen Klopp",
+    titlesWon :1
   },
-  "dob":{
-    "date": "1969-05-04",
-    "age":"50"
-  },
-  "registered":{
-    "date":"2017-12-7",
-    "age":2
-  }
+  players:[
+    {name:"Alisson Becker"},
+    {name:"Virgil van Dijk"},
+    {name:"Joe Gomez"},
+    {name:"Andy Robertson"},
+    {name:"Trente Alexander-Arnold"},
+    {name:"Fabinho"},
+    {name:"Gini Wijnaldum"},
+    {name:"Jordan Henderson"},
+    {name:"James Milner"},
+    {name:"Sadio Mane"},
+    {name:"Mo Salah"},
+    {name:"Roberto Firmino"}
+  ]
 }
 
 //Header Story
@@ -66,6 +67,10 @@ storiesOf("Football Club App/Club List", module).addDecorator(story => ( <Memory
 });
 
 storiesOf("Football Club App/Club Page/Public Profile",module).add("default",() => ( 
-  <ClubProfile user = {sample}/>
+  <ClubProfile club = {sample}/>
 ))
 
+storiesOf("Football Club App/Club Page/More Details", module)
+.add("default", () => (
+   <ClubMoreInfo club = {sample}/>
+));
