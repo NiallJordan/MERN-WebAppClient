@@ -6,9 +6,14 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css';
 //import localCache from "./localCache";
 import request from "superagent";
 import api from "./dataStore/stubAPI";
+import _ from 'lodash';
 
 class App extends Component {
   state = { search:"",gender:"all"};
+
+  handleChange = (type,value)=>{
+    type === "name" ? this.setState({search : value}): this.setState({ league : value});
+  };
 
   componentDidMount() {
         request.get("https://randomuser.me/api/?results=50").end((error, res) => {
@@ -29,11 +34,17 @@ class App extends Component {
 
   render() {
     let clubs = api.getAll();
+    let filteredClubs = clubs.filter( c => {
+      const name = `${c.name}`;
+      return name.toLowerCase().search(this.state.search.toLowerCase()) !== -1;
+    });
+    filteredClubs = this.state.league === "all" ? filteredClubs : filteredClubs.filter(c => c.league === this.state.league);
+    let sortedClubs = _.sortBy(filteredClubs,c => c.name);
     return (
     <div className="jumbotron">
-        <Header noClubs={clubs.length} />
-        <FilterControls />
-        <ClubList clubs={clubs} deleteHandler={this.deleteClub}/>
+        <Header noClubs={sortedClubs.length} />
+        <FilterControls onUserInput={this.handleChange}/>
+        <ClubList clubs={sortedClubs} deleteHandler={this.deleteClub}/>
     </div>
     );
   }

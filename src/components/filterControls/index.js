@@ -2,10 +2,17 @@ import React, { Component } from "react";
 import "./filterControls.css"
 
 export default class FilterControls extends Component {
-  onChange = (event) => {
-    event.preventDefault();
-    let newText = event.target.value.toLowerCase();
-    this.props.handleChange(newText);
+  handleChange = (e,type,value) => {
+    e.preventDefault();
+    this.props.onUserInput(type,value);
+  };
+
+  handleTextChange = e =>{
+    this.handleChange(e,"name",e.target.value);
+  };
+
+  handleLeagueChange = e => {
+    this.handleChange(e,"league",e.target.value);
   };
 
   render() {
@@ -15,9 +22,9 @@ export default class FilterControls extends Component {
           <div className="col-md-12">
             <h4>
               <span>Name: </span>
-              <input type="text" placeholder="Name Search" onChange={this.onChange}/>
+              <input type="text" placeholder="Name Search" onChange={this.handleTextChange}/>
               <span> League: </span>
-              <select id="league">
+              <select id="league" onChange={this.handleLeagueChange}>
                 <option value="all">All</option>
                 <option value="pl">Premier League</option>
                 <option value="serie">Serie A</option>

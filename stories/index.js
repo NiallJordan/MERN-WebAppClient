@@ -22,18 +22,18 @@ storiesOf("Football Club App/Header", module).add("default", () => (
 
 //Filter Story
 storiesOf("Football Club App/Filter Controls", module).add("default", () => (
-  <Filter />
+  <Filter onUserInput={action('Search criteria changes')} />
 ));
 
 storiesOf("Football Club App/Club", module).add("default", () => (
   <Club club={sample}/>
-));    
+));
 
-storiesOf("Football Club App/Club List", module).add("default", () => { 
+storiesOf("Football Club App/Club List", module).add("default", () => {
   const samples = [sample, sample, sample, sample, sample]
   return <ClubList clubs={samples}/>
 });
 
-storiesOf("Football Club App/Club", module).add("default", () => ( 
+storiesOf("Football Club App/Club", module).add("default", () => (
   <Club club={sample} deleteHandler={action('Delete confirmed') }/>
 ));
