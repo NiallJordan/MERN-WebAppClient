@@ -8,7 +8,7 @@ export default ({ club }) => {
     `${club.location.city}, ${club.location.country}`
   );
   const stadium = capitalize(
-    ` ${club.stadium.name}, Capacity: ${club.stadium.capacity}`
+    ` ${club.stadium.stadium_name}, Capacity: ${club.stadium.capacity}`
   );
   const league = `${club.league}, Position: ${club.placeInLeague}`;
   return (
@@ -29,7 +29,6 @@ export default ({ club }) => {
         <FontAwesomeIcon icon={["fas", "phone"]} />
         <span> {club.phone}</span>
       </h4>
-      
     </Fragment>
   );
 };

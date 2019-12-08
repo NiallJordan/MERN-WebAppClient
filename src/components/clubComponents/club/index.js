@@ -68,10 +68,10 @@ class Club extends Component{
         }
         console.log(`render of Club (${this.props.club.name})`)
         return (
-        <div className="col-sm-3">
+        <div className="col-sm-3 clubCard">
             <div className={`card ${cardColor} `}>
                 <Link to={`/clubs/${this.props.club.phone}`}>
-                    <img className="card-img-tag center " alt={this.props.club.name} src={this.props.club.picture.logo} />
+                    <img className="card-img-tag center " height="200px" alt={this.props.club.name} src={this.props.club.logo} />
                 </Link>
             <div className="card-body">
                 <h5 className="card-title ">

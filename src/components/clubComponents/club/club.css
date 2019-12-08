@@ -2,7 +2,7 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 40%;
+  width: 60%;
 }
 
 .card-body  {
@@ -11,4 +11,9 @@
 
 .card{
   padding: 20px;
+}
+
+.clubCard{
+  height: 500px;
+  padding: 5px;
 }

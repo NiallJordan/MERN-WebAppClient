@@ -12,10 +12,16 @@ class App extends Component {
   state = { search:"",league:"all"};
 
   handleChange = (type,value)=>{
-    type === "name" 
-    ? this.setState({search : value}) 
+    type === "name"
+    ? this.setState({search : value})
     : this.setState({ league : value});
   };
+
+  addClub = (name,logo,league,placeInLeague,phone,city,country,stadium_name,capacity,numberOfPlayers,yearEstablished,manager_name) => {
+    api.add(name,logo,league,placeInLeague,phone,city,country,stadium_name,capacity,numberOfPlayers,yearEstablished,manager_name);
+    this.setState({});
+  }
+
 
   deleteClub =(key) => {
     api.delete(key);
@@ -35,10 +41,10 @@ class App extends Component {
         <Header noClubs={sortedClubs.length} />
         <FilterControls onUserInput={this.handleChange}/>
         <div className="row">
-          <div className="col-md-2">
-          <ClubForm />
+          <div className="col-md-3">
+          <ClubForm handleAdd={this.addClub} />
           </div>
-          <div className="col-md-10">
+          <div className="col-md-9">
           <ClubList clubs={sortedClubs} deleteHandler={this.deleteClub}/>
           </div>
         </div>

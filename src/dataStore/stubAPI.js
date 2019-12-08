@@ -6,7 +6,7 @@ class StubAPI{
             {
                 id:1,
                 name: "Liverpool",
-                picture: {logo:"./logo.png"},
+                logo:"./clubPics/liverpool.png",
                 league: "Premier League",
                 placeInLeague: 1,
                 phone: "0151 906 1892",
@@ -15,34 +15,34 @@ class StubAPI{
                     country:"England"
                 },
                 stadium:{
-                    name:"Anfield",
+                    stadium_name:"Anfield",
                     capacity:54074
                 },
                 numberOfPlayers:37,
                 yearEstablished: 1892,
                 manager:{
-                    name: "Jurgen Klopp",
+                    manager_name: "Jurgen Klopp",
                     titlesWon :1
                 },
                 players:[
-                    {name:"Alisson Becker"},
-                    {name:"Virgil van Dijk"},
-                    {name:"Joe Gomez"},
-                    {name:"Andy Robertson"},
-                    {name:"Trente Alexander-Arnold"},
-                    {name:"Fabinho"},
-                    {name:"Gini Wijnaldum"},
-                    {name:"Jordan Henderson"},
-                    {name:"James Milner"},
-                    {name:"Sadio Mane"},
-                    {name:"Mo Salah"},
-                    {name:"Roberto Firmino"}
+                    {player_name:"Alisson Becker"},
+                    {player_name:"Virgil van Dijk"},
+                    {player_name:"Joe Gomez"},
+                    {player_name:"Andy Robertson"},
+                    {player_name:"Trente Alexander-Arnold"},
+                    {player_name:"Fabinho"},
+                    {player_name:"Gini Wijnaldum"},
+                    {player_name:"Jordan Henderson"},
+                    {player_name:"James Milner"},
+                    {player_name:"Sadio Mane"},
+                    {player_name:"Mo Salah"},
+                    {player_name:"Roberto Firmino"}
                 ]
             },
             {
                 id:2,
                 name: "Leicester",
-                picture: {logo:"./logo.png"},
+                logo:"./clubPics/leicester.png",
                 league: "Premier League",
                 placeInLeague: 2,
                 phone: "1232 412 231",
@@ -51,23 +51,23 @@ class StubAPI{
                     country:"England"
                 },
                 stadium:{
-                    name:"King Power Stadium",
+                    stadium_name:"King Power Stadium",
                     capacity:32312
                 },
                 numberOfPlayers:37,
                 yearEstablished: 1884,
                 manager:{
-                    name: "Brendan Rodgers",
+                    manager_name: "Brendan Rodgers",
                     titlesWon :0
                 },
                 players:[
-                    {name:"Jamie Vardy"},
+                    {player_name:"Jamie Vardy"},
                 ]
             },
             {
                 id:3,
                 name: "Man City",
-                picture: {logo:"./logo.png"},
+                logo:"./clubPics/mancity.png",
                 league: "Premier League",
                 placeInLeague: 3,
                 phone: "3123 321 543",
@@ -76,23 +76,23 @@ class StubAPI{
                     country:"England"
                 },
                 stadium:{
-                    name:"Etihad",
+                    stadium_name:"Etihad",
                     capacity:55097
                 },
                 numberOfPlayers:37,
                 yearEstablished: 1880,
                 manager:{
-                    name: "Pep Guirdiola",
+                    manager_name: "Pep Guirdiola",
                     titlesWon :3
                 },
                 players:[
-                    {name: "Raheem Sterling"}
+                    {player_name: "Raheem Sterling"}
                 ]
             },
             {
                 id:4,
                 name: "Chelsea",
-                picture: {logo:"./logo.png"},
+                logo:"./clubPics/chelsea.png",
                 league: "Premier League",
                 placeInLeague: 4,
                 phone: "3567 534 766",
@@ -101,23 +101,23 @@ class StubAPI{
                     country:"England"
                 },
                 stadium:{
-                    name:"Stamford Bridge",
+                    stadium_name:"Stamford Bridge",
                     capacity:41631
                 },
                 numberOfPlayers:40,
                 yearEstablished: 1905,
                 manager:{
-                    name: "Frank Lampard",
+                    manager_name: "Frank Lampard",
                     titlesWon:0
                 },
                 players:[
-                    {name:"Ngolo Kante"}
+                    {player_name:"Ngolo Kante"}
                 ]
             },
             {
                 id:5,
                 name: "Juventus",
-                picture: {logo:"./logo.png"},
+                logo:"./clubPics/juve.png",
                 league: "Serie A",
                 placeInLeague: 1,
                 phone: "0312 625 123",
@@ -126,17 +126,17 @@ class StubAPI{
                     country:"Italy"
                 },
                 stadium:{
-                    name:"Allianz Stadium",
+                    stadium_name:"Allianz Stadium",
                     capacity:41507
                 },
                 numberOfPlayers:37,
                 yearEstablished: 1892,
                 manager:{
-                    name: "Maurizzio Sarri",
+                    manager_name: "Maurizzio Sarri",
                     titlesWon :1
                 },
                 players:[
-                    {name:"Cristiano Ronaldo"},
+                    {player_name:"Cristiano Ronaldo"},
                 ]
             }
 
@@ -149,6 +149,29 @@ class StubAPI{
             return this.clubs[index];
         }
         return null;
+    }
+
+    add(name,logo,league,placeInLeague,phone,city,country,stadium_name,capacity,numberOfPlayers,yearEstablished,manager_name){
+        let id =1;
+        let last = _.last(this.clubs);
+        if(last){
+            id=last.id +1;
+        }
+        let len = this.clubs.length;
+        let newLength = this.clubs.push({
+            id,
+            name,
+            logo,
+            league,
+            placeInLeague,
+            phone,
+            location:{city,country},
+            stadium:{stadium_name,capacity},
+            numberOfPlayers,
+            yearEstablished,
+            manager:{manager_name},
+        });
+        return newLength >len
     }
 
     delete(k){
