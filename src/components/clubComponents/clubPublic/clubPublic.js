@@ -5,10 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default ({ club }) => {
   const location = capitalize(
-    `${club.location.city}, ${club.location.country}`
+    `${club.city}, ${club.country}`
   );
   const stadium = capitalize(
-    ` ${club.stadium.stadium_name}, Capacity: ${club.stadium.capacity}`
+    ` ${club.stadium_name}, Capacity: ${club.capacity}`
   );
   const league = `${club.league}, Position: ${club.placeInLeague}`;
   return (

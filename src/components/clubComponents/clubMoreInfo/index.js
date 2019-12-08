@@ -18,9 +18,9 @@ export default ({ club }) => {
             <span>Manger</span>
             <dl>
               <dt>Name:</dt>
-              <dd>{club.manager.manager_name}</dd>
+              <dd>{club.manager_name}</dd>
               <dt>Titles:</dt>
-              <dd>{club.manager.titlesWon}</dd>
+              <dd>{club.titlesWon}</dd>
             </dl>
           </li>
         </ul>

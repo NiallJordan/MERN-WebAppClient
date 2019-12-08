@@ -23,7 +23,7 @@ export default ({ club }) => {
       </div>
       <div className="row">
         <div className="col-3">
-          <img src={club.picture.logo} className="club" alt={name} />
+          <img src={club.logo} className="club" alt={name} />
         </div>
         <div className="col-4">
           <ClubProfile club={club} />

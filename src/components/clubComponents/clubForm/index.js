@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './clubForm.css';
 
 export default class Form extends Component {
-  state={name:'',logo:'',league:'',placeInLeague:0,phone:'',city:'',country:'',stadium_name:'',capacity:0,numberOfPlayers:0,yearEstablished:0,manager_name:''};
+  state={name:'',logo:'',league:'',placeInLeague:'',phone:'',city:'',country:'',stadium_name:'',capacity:'',numberOfPlayers:'',yearEstablished:'',manager_name:'',titlesWon:''};
   
   handleNameChange=(e) => this.setState({name: e.target.value});
   handleLogoChange=(e) => this.setState({logo: e.target.value});
@@ -16,10 +16,11 @@ export default class Form extends Component {
   handleNumOfPlayersChange=(e) => this.setState({numberOfPlayers: e.target.value});
   handleYearChange=(e) => this.setState({yearEstablished: e.target.value});
   handleManagerChanger=(e) => this.setState({manager_name: e.target.value});
+  handleTitlesWonChange=(e) => this.setState({titlesWon: e.target.value});
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.handleAdd( this.state.name, this.state.logo, this.state.league, this.state.placeInLeague, this.state.phone, this.state.city, this.state.country, this.state.stadium_name, this.state.capacity, this.state.numberOfPlayers, this.state.yearEstablished, this.state.manager_name)
+    this.props.handleAdd( this.state.name, this.state.logo, this.state.league, this.state.placeInLeague, this.state.phone, this.state.city, this.state.country, this.state.stadium_name, this.state.capacity, this.state.numberOfPlayers, this.state.yearEstablished, this.state.manager_name, this.state.titlesWon)
     this.setState({
       name:'',
       logo:'',
@@ -32,7 +33,9 @@ export default class Form extends Component {
       capacity:0,
       numberOfPlayers:0,
       yearEstablished:0,
-      manager_name:''})
+      manager_name:'',
+      titlesWon:0
+    })
 }
 
 
@@ -130,6 +133,13 @@ export default class Form extends Component {
                 placeholder="Manager Name"
                 value={this.state.manager_name}
                 onChange={this,this.handleManagerChanger}></input>
+            </div>
+            <div className="form-group">
+                <input type="text"
+                  className="form-control"
+                placeholder="Titles Won"
+                value={this.state.titlesWon}
+                onChange={this,this.handleTitlesWonChange}></input>
             </div>
             <button type="submit" onClick={this.handleSubmit} className="btn btn-primary">Add</button>
         </form>
