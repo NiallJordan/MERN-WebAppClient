@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import Header from "./components/header/";
 import ClubList from "./components/clubComponents/clubList";
 import FilterControls from "./components/filterControls/";
+import ClubForm from "./components/clubComponents/clubForm";
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
 import api from "./dataStore/stubAPI";
@@ -34,6 +35,7 @@ class App extends Component {
         <Header noClubs={sortedClubs.length} />
         <FilterControls onUserInput={this.handleChange}/>
         <ClubList clubs={sortedClubs} deleteHandler={this.deleteClub}/>
+        <ClubForm />
       </Fragment>
     );
   }
