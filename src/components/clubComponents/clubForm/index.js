@@ -17,6 +17,11 @@ export default class Form extends Component {
                 placeholder="League"></input>
             </div>
             <div className="form-group">
+              <input type="text"
+                className="form-control"
+                placeholder="Place In League"></input>
+            </div>
+            <div className="form-group">
                 <input type="text"
                   className="form-control"
                 placeholder="Phone"></input>

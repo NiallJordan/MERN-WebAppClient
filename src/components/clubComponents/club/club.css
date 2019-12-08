@@ -8,3 +8,7 @@
 .card-body  {
   word-break:break-all
 }
+
+.card{
+  padding: 20px;
+}

@@ -103,7 +103,7 @@ class Club extends Component{
                     )}
                     </div>
                     <div className="card-footer">
-                        <div className="btn-group d-flex btn-group-justified" role="group" aria-label="...">
+                        <div className="btn-group d-flex center" role="group" aria-label="...">
                         <button type="button" className={"btn w-100 " + activeButtons.leftButtonColor} onClick={leftButtonHandler}>
                             {activeButtons.leftButtonVal}
                         </button>

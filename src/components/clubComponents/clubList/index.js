@@ -15,7 +15,7 @@ export default class ClubList extends Component {
     render() {
         console.log('render of filterClubList')
         const clubCards = this.props.clubs.map(c => (
-          <Club key={c.placeInLeague} club={c} deleteHandler={this.props.deleteHandler} />
+          <Club key={c.phone} club={c} deleteHandler={this.props.deleteHandler} />
         ));
         return (
         <div className="container-fluid clubs bg-info">

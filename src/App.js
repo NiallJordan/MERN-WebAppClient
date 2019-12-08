@@ -34,8 +34,14 @@ class App extends Component {
     <Fragment>
         <Header noClubs={sortedClubs.length} />
         <FilterControls onUserInput={this.handleChange}/>
-        <ClubList clubs={sortedClubs} deleteHandler={this.deleteClub}/>
-        <ClubForm />
+        <div className="row">
+          <div className="col-md-2">
+          <ClubForm />
+          </div>
+          <div className="col-md-10">
+          <ClubList clubs={sortedClubs} deleteHandler={this.deleteClub}/>
+          </div>
+        </div>
       </Fragment>
     );
   }
