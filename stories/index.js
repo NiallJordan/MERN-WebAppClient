@@ -10,7 +10,7 @@ import ClubList from '../src/components/clubComponents/clubList';
 import ClubPublic from '../src/components/clubComponents/clubPublic/clubPublic';
 import ClubMoreInfo from '../src/components/clubComponents/clubMoreInfo/index';
 import ClubProfile from '../src/components/clubComponents/clubPublic/index';
-
+import ClubForm from '../src/components/clubComponents/clubForm/index';
 
 const sample = {
   name: 'Liverpool',
@@ -81,3 +81,5 @@ storiesOf("Football Club App/Club Page/Club Profile",module).addDecorator(story 
 .add("default", () => {
   <ClubProfile club = {sample}/>
 });
+
+storiesOf("Football Club App/Club Form", module).add("default", () => <ClubForm />);
