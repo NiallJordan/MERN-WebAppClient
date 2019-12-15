@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from "react";
 import Header from "./components/header/";
 import ClubList from "./components/clubComponents/clubList";
-import FilterControls from "./components/filterControls/";
-import ClubForm from "./components/clubComponents/clubForm";
+
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
 import api from "./dataStore/stubAPI";
 import _ from 'lodash';
+import CommentList from "./components/commentComponents/commentList";
+import CommentForm from "./components/commentComponents/commentForm";
 
 class App extends Component {
   state = { search:"",league:"all"};
@@ -17,17 +18,32 @@ class App extends Component {
     : this.setState({ league : value});
   };
 
-  addClub = (name,logo,league,placeInLeague,phone,city,country,stadium_name,capacity,numberOfPlayers,yearEstablished,manager_name) => {
-    api.add(name,logo,league,placeInLeague,phone,city,country,stadium_name,capacity,numberOfPlayers,yearEstablished,manager_name);
+  addClub = (name,logo,league,placeInLeague,phone,city,country,stadium_name,capacity,numberOfPlayers,yearEstablished,manager_name,titlesWon) => {
+    api.add(name,logo,league,placeInLeague,phone,city,country,stadium_name,capacity,numberOfPlayers,yearEstablished,manager_name,titlesWon)
     this.setState({});
-  }
-
+  };
 
   deleteClub =(key) => {
     api.delete(key);
     this.setState({});
   };
 
+
+  //Comments
+  addComment = (comment, name) => {
+    api.addComment(comment, name);
+    this.setState({});
+  };
+
+  incrementPoints = (commentId) => {
+    api.upvoteComment(commentId) ;
+    this.setState({});
+};
+
+decrementPoints = (commentId) => {
+  api.downvoteComment(commentId) ;
+  this.setState({});
+};
   render() {
     let clubs = api.getAll();
     let filteredClubs = clubs.filter( c => {
@@ -36,16 +52,21 @@ class App extends Component {
     });
     filteredClubs = this.state.league === "all" ? filteredClubs : filteredClubs.filter(c => c.league === this.state.league);
     let sortedClubs = _.sortBy(filteredClubs,c => c.placeInLeague);
+
+    let comments = api.getAllComments();
+    let sortedComments = _.sortBy(comments, c => -c.points);
     return (
     <Fragment>
-        <Header noClubs={sortedClubs.length} />
-        <FilterControls onUserInput={this.handleChange}/>
+        <Header onUserInput={this.handleChange} noClubs={sortedClubs.length} />
         <div className="row">
-          <div className="col-md-3">
-          <ClubForm handleAdd={this.addClub} />
+          <div className="col-md-10">
+            <p>Clubs</p>
+          <ClubList clubs={sortedClubs} upvoteHandler={this.incrementUpvote} deleteHandler={this.deleteClub}/>
           </div>
-          <div className="col-md-9">
-          <ClubList clubs={sortedClubs} deleteHandler={this.deleteClub}/>
+          <div className="col-md-2">
+            <p>Comments</p>
+          <CommentList comments={sortedComments} upvoteHandler={this.incrementPoints} downvoteHandler={this.decrementPoints}/>
+          <CommentForm handleAdd={this.addComment}/>
           </div>
         </div>
       </Fragment>

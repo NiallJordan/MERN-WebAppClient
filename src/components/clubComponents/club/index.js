@@ -9,32 +9,35 @@ import api from '../../../dataStore/stubAPI'
 class Club extends Component{
     state = {
         status: "",
+        placeInLeague:this.props.club.placeInLeague,
         phone: this.props.club.phone,
-        placeInLeague: this.props.club.placeInLeague,
         previousDetails: {
-            phone:this.props.club.phone,
-            placeInLeague: this.props.club.placeInLeague
+            placeInLeague:this.props.club.placeInLeague,
+            phone: this.props.club.phone,
         }
       };
 
     //-----------------HANDLERS----------------------
     handleEdit = () => this.setState({status:"edit"});
     handleCancel = () => {
-        let {placeInLeague,phone} = this.state.previousDetails;
-        this.setState({ status:"", placeInLeague,phone});
+        let {name,logo,league,placeInLeague,phone, city, country, stadium_name, capacity, numberOfPlayers,yearEstablished,manager_name,titlesWon} = this.state.previousDetails;
+        this.setState({ status:"", name,logo,league,placeInLeague,phone, city, country, stadium_name, capacity, numberOfPlayers,yearEstablished,manager_name,titlesWon});
     };
+
     handlePhoneChange = e => this.setState({phone: e.target.value});
     handlePlaceInLeagueChange = e => this.setState({placeInLeague: e.target.value});
+
+
+
     handleSave = e => {
         e.preventDefault();
-        let updatedPlaceInLeague = this.state.placeInLeague.trim();
+        let updatedPlaceInLeague = this.state.placeInLeague;
         let updatedPhone = this.state.phone.trim();
-
-        if(!updatedPlaceInLeague || !updatedPhone){
+        if(!updatedPlaceInLeague || !updatedPhone ){
             return;
         }
         let {placeInLeague,phone} = this.state;
-        this.setState({status: "", previousDetails:{placeInLeague,phone}});
+        this.setState({status: "", previousDetails:{placeInLeague, phone}});
         api.update(this.state.previousDetails.phone,updatedPlaceInLeague,updatedPhone);
     };
 
@@ -43,12 +46,6 @@ class Club extends Component{
     e.preventDefault();
     this.props.deleteHandler(this.state.phone);
     };
-
-
-    // shouldComponentUpdate(nextProps, nextState){
-    //     console.log(`shouldComponentUpdate of Club (${this.props.club.name})`)
-    //     return false;
-    // }
 
     render(){
         let activeButtons = buttons.normal;
@@ -100,7 +97,7 @@ class Club extends Component{
                             <span> {this.props.club.phone} </span>
                         </p>
                     </Fragment>
-                    )}
+                    )}``
                     </div>
                     <div className="card-footer">
                         <div className="btn-group d-flex center" role="group" aria-label="...">

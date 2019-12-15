@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import './clubForm.css';
+import {Link} from 'react-router-dom';
+import "../../../fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import api from '../../../dataStore/stubAPI';
+
 
 export default class Form extends Component {
   state={name:'',logo:'',league:'',placeInLeague:'',phone:'',city:'',country:'',stadium_name:'',capacity:'',numberOfPlayers:'',yearEstablished:'',manager_name:'',titlesWon:''};
@@ -20,7 +26,7 @@ export default class Form extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.handleAdd( this.state.name, this.state.logo, this.state.league, this.state.placeInLeague, this.state.phone, this.state.city, this.state.country, this.state.stadium_name, this.state.capacity, this.state.numberOfPlayers, this.state.yearEstablished, this.state.manager_name, this.state.titlesWon)
+    api.add( this.state.name, this.state.logo, this.state.league, this.state.placeInLeague, this.state.phone, this.state.city, this.state.country, this.state.stadium_name, this.state.capacity, this.state.numberOfPlayers, this.state.yearEstablished, this.state.manager_name, this.state.titlesWon)
     this.setState({
       name:'',
       logo:'',
@@ -46,6 +52,11 @@ export default class Form extends Component {
 
     render() {
         return (
+          <div>
+            <Link to="/">
+            <FontAwesomeIcon icon={["fas", "arrow-circle-left"]} size="3x" />
+            <span>Back</span>
+          </Link>
         <form  className="form bg-dark text-light">
             <h3>Add a Club</h3>
             <div className="form-group">
@@ -56,11 +67,10 @@ export default class Form extends Component {
                 onChange={this,this.handleNameChange}></input>
             </div>
             <div className="form-group">
-                <input type="file" accept="image/*" id="file" onChange="loadFile(event)" name="image"
+                <input type="file" accept="image/*" id="file" onChange={this.handleLogoChange} name="image"
                   className="form-control"
                   placeholder="Logo"
                   value={this.state.logo}
-                  onChange={this, this.handleLogoChange}
                   ></input>
             </div>
             <div className="form-group">
@@ -143,6 +153,7 @@ export default class Form extends Component {
             </div>
             <button type="submit" onClick={this.handleSubmit} className="btn btn-primary">Add</button>
         </form>
+        </div>
         );
     }
 }

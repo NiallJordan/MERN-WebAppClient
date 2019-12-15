@@ -17,7 +17,8 @@ class StubAPI{
                 numberOfPlayers:37,
                 yearEstablished: 1892,
                 manager_name: "Jurgen Klopp",
-                titlesWon :1
+                titlesWon :1,
+                
             },
             {
                 id:2,
@@ -33,7 +34,8 @@ class StubAPI{
                 numberOfPlayers:37,
                 yearEstablished: 1884,
                 manager_name: "Brendan Rodgers",
-                titlesWon :0
+                titlesWon :0,
+                
             },
             {
                 id:3,
@@ -49,7 +51,8 @@ class StubAPI{
                 numberOfPlayers:37,
                 yearEstablished: 1880,
                 manager_name: "Pep Guirdiola",
-                titlesWon :3
+                titlesWon :3,
+                
             },
             {
                 id:4,
@@ -65,7 +68,8 @@ class StubAPI{
                 numberOfPlayers:40,
                 yearEstablished: 1905,
                 manager_name: "Frank Lampard",
-                titlesWon:0
+                titlesWon:0,
+                
             },
             {
                 id:5,
@@ -81,13 +85,34 @@ class StubAPI{
                 numberOfPlayers:37,
                 yearEstablished: 1892,
                 manager_name: "Maurizzio Sarri",
-                titlesWon :1
+                titlesWon :1,
+                
             }
+        ];
 
+        this.comments = [
+            {
+                id:1,
+                comment: "Love this!",
+                name:"LiverpoolSixTimes",
+                points:10
+            },
+            {
+                id:2,
+                comment: "We are gonna win the League",
+                name:"YNWA",
+                points:4
+            },
+            {
+                id:3,
+                comment: "Dirty Scousers",
+                name:"CitysBiggestFan01",
+                points:0
+            }
         ];
     }
 
-    find(id){
+    getClub(id){
         let index = _.findIndex(this.clubs, club => `${club.phone}` === id);
         if(index !== -1){
             return this.clubs[index];
@@ -102,22 +127,7 @@ class StubAPI{
             id=last.id +1;
         }
         let len = this.clubs.length;
-        let newLength = this.clubs.push({
-            id,
-            name,
-            logo,
-            league,
-            placeInLeague,
-            phone,
-            city,
-            country,
-            stadium_name,
-            capacity,
-            numberOfPlayers,
-            yearEstablished,
-            manager_name,
-            titlesWon,
-        });
+    let newLength = this.clubs.push({id,name,logo,league,placeInLeague,phone,city,country,stadium_name,capacity,numberOfPlayers,yearEstablished,manager_name,titlesWon});
         return newLength >len
     }
 
@@ -137,12 +147,54 @@ class StubAPI{
     update(key,placeInLeague,phone){
         let index = _.findIndex(this.clubs,club => club.phone === key);
         if (index !== -1){
-            this.clubs[index].phone = phone;
             this.clubs[index].placeInLeague = placeInLeague;
+            this.clubs[index].phone = phone;
             return true;
         }
         return false;
     }
+
+
+    //Comments
+    getAllComments(){
+        return this.comments;
+    }
+
+    getComment(id){
+        let index = _.findIndex(this.comments, comment => comment.name === id);
+        let result = index !== -1 ? this.comments[index] : null;
+        return result;
+    }
+
+    addComment(comment, name) {
+        let id = 1;
+        let last = _.last(this.comments);
+        if (last) {
+            id = last.id + 1;
+        }
+        let len = this.comments.length;
+        let newLength = this.comments.push({id:id,comment: comment,name:name,points:0});
+        return newLength >len
+    }
+
+    upvoteComment(commentId) {
+        let index = _.findIndex(this.comments, comment => comment.id === commentId);
+        if (index !== -1) {
+            this.comments[index].points += 1;
+            return true;
+        }
+        return false;
+    }
+
+    downvoteComment(commentid){
+        let index = _.findIndex(this.comments,comment => comment.id === commentid);
+        if(index !== -1){
+            this.comments[index].points -= 1;
+            return true;
+        }
+        return false;
+    }
+
 }
 
 export default new StubAPI();

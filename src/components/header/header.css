@@ -6,3 +6,8 @@
 .badge{
     background-color: green;
 }
+
+.nav-bar{
+    position: relative;
+    display: block;
+}

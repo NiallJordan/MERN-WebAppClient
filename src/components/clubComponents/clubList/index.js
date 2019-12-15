@@ -3,14 +3,7 @@ import Club from "../club/";
 import './clubList.css';
 
 export default class ClubList extends Component {
-    // shouldComponentUpdate(nextProps,nextState){
-    //     console.log('shouldComponentUpdate of ClubsList')
-    //     if(this.props.clubs.length === nextProps.clubs.length){
-    //         return false;
-    //     }else{
-    //         return true;
-    //     }
-    // }
+
 
     render() {
         console.log('render of filterClubList')

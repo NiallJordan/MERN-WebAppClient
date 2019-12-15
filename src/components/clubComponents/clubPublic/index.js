@@ -28,9 +28,6 @@ export default ({ club }) => {
         <div className="col-4">
           <ClubProfile club={club} />
         </div>
-        <div className="col-5 bg-secondary text-light">
-           <span>Map placeholder</span>
-        </div>
       </div>
     </Fragment>
   );

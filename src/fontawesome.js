@@ -7,7 +7,9 @@ import {
   faArrowCircleLeft,
   faMedal,
   faFutbol,
-  faUsers
+  faUsers,
+  faThumbsUp,
+  faThumbsDown
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faEnvelope, faPhone,faFutbol,faUsers, faHome, faBirthdayCake, faMedal,faArrowCircleLeft);
+library.add(faEnvelope,faThumbsDown, faThumbsUp ,faPhone,faFutbol,faUsers, faHome, faBirthdayCake, faMedal,faArrowCircleLeft);

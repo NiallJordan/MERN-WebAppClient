@@ -12,6 +12,10 @@ import ClubMoreInfo from '../src/components/clubComponents/clubMoreInfo/index';
 import ClubProfile from '../src/components/clubComponents/clubPublic/index';
 import ClubForm from '../src/components/clubComponents/clubForm/index';
 
+import CommentForm from "../src/components/commentComponents/commentForm";
+import Comment from "../src/components/commentComponents/comment";
+import CommentList from "../src/components/commentComponents/commentList";
+
 const sample = {
   name: 'Liverpool',
   picture: {logo:'./logo.png'},
@@ -46,7 +50,16 @@ const sample = {
     {name:"Mo Salah"},
     {name:"Roberto Firmino"}
   ]
-}
+};
+
+
+const comment = {
+  id: 1,
+  name: "Joe Bloggs",
+  comment: "I agree with .....",
+  upvotes: 10
+};
+
 
 //Header Story
 storiesOf("Football Club App/Header", module).add("default", () => (
@@ -78,8 +91,32 @@ storiesOf("Football Club App/Club Page/More Details", module)
 ));
 
 storiesOf("Football Club App/Club Page/Club Profile",module).addDecorator(story => (<MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>))
-.add("default", () => {
+.add("default", () => (
   <ClubProfile club = {sample}/>
-});
+));
 
-storiesOf("Football Club App/Club Form", module).add("default", () => <ClubForm />);
+storiesOf("Football Club App/Club Form", module).add("default", () => <ClubForm addHandler={action('Add confirmed')}/>);
+
+
+
+storiesOf("Football Club App/Comment page/Comment Form", module).add("default", () => (
+  <CommentForm club={sample} addCommentHandler={action("comment added")} />
+));
+
+
+
+storiesOf("Football Club App/Comment page/Comment", module).add("default", () => (
+  <Comment upvoteHandler={action("upvoted")} comment={comment} />
+));
+
+storiesOf("Football Club App/Comment page/Comment list", module).add("default", () => {
+  const defaultComments = [
+    comment,
+    { ...comment, name: "Jane Smith", upvotes: 3, id: 2 },
+    { ...comment, comment: "On the other hand", id: 3 },
+    { ...comment, name: "Jill Dwyer", upvotes: 5, id: 4 }
+  ];
+  return (
+    <CommentList upvoteHandler={action("upvoted")} comments={defaultComments} />
+  );
+});
