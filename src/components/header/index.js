@@ -28,6 +28,7 @@ export default class Header extends Component {
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/clubForm">Add a Club</Nav.Link>
+              <Nav.Link href="/aboutPage">About Us</Nav.Link>
               <Form inline>
                 <FormControl type="text" placeholder="Name Search" className="mr-sm-2" onChange={this.handleTextChange}/>
               </Form>
